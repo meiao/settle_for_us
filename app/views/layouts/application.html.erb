@@ -8,7 +8,18 @@
 </head>
 <body>
 
-<%= yield %>
+  <div id="header">
+  <% if current_user != nil %>
+    <%= current_user.to_yaml %>
+    <%= link_to "Logout", "/sessions/logout" %>
+  <% else %>
+    <%= link_to "Sign in with 4^2", "/auth/foursquare" %>
+  <% end %>
+  </div>
+
+  <div id="main">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
