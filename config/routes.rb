@@ -1,7 +1,8 @@
 SettleForUs::Application.routes.draw do
 
 
-  get "settle/settle"
+  match "settle", to: 'settle#settle', format: false
+  match "settle/try_again", to: 'settle#try_again', format: false
 
   get "main/index"
 

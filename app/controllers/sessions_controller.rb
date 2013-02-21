@@ -15,12 +15,25 @@ class SessionsController < ApplicationController
       user.save
     end
     session[:current_user] = {:name => user.name, :id => user.id, :oauth_token => auth.credentials.token}
-    redirect_to(:controller => 'main')
+#    categories = four2_client.venue_categories
+#    session[:food_category_id] = get_food_category_id(categories)
     
+    redirect_to(:controller => 'main')
   end
   
   def logout
     session[:current_user] = nil
     redirect_to(:controller => 'main')
   end
+  
+  private
+  
+  def get_food_category_id(categories)
+    cat = ''
+    categories.each do |category|
+      cat = category.id.to_s if category.name.strip == 'Food'
+    end
+    return cat
+  end
+  
 end

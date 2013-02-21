@@ -9,16 +9,28 @@
 <body>
 
   <div id="header">
-  <% if current_user != nil %>
-    <%= current_user.to_yaml %>
-    <%= link_to "Logout", "/sessions/logout" %>
-  <% else %>
-    <%= link_to "Sign in with 4^2", "/auth/foursquare" %>
-  <% end %>
+    <div class="content">
+      <span id="logo">
+        <%= image_tag("/images/settle_for_us.png")%>
+      </span>
+        <span id="loginout">
+        <% if current_user != nil %>
+          Hello, <%= current_user[:name] %>.
+          <span id="logout">
+            <%= link_to "Logout", "/sessions/logout" %>
+          </span>
+        <% else %>
+          <%= link_to("Login", "/auth/foursquare")  %>
+          <%= link_to(image_tag("/images/4square_logo.png"), "/auth/foursquare")%>
+        <% end %>
+      </span>
+    </div>
   </div>
 
   <div id="main">
-    <%= yield %>
+    <div class="content">
+      <%= yield %>
+    </div>
   </div>
 
 </body>

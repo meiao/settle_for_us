@@ -1,2 +1,6 @@
-<h1>Settle#settle</h1>
-<p>Find me in app/views/settle/settle.html.erb</p>
+<p>You should go to: </p>
+<a href="<%= @local[:canonicalUrl] %>">
+<%= @local.name %>
+</a>
+
+<%= @local.to_yaml %>
