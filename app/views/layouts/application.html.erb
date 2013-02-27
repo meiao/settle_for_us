@@ -8,30 +8,40 @@
 </head>
 <body>
 
+  <div id="content">
+  
   <div id="header">
-    <div class="content">
-      <span id="logo">
-        <%= image_tag("/images/settle_for_us.png")%>
-      </span>
-        <span id="loginout">
-        <% if current_user != nil %>
-          Hello, <%= current_user[:name] %>.
-          <span id="logout">
-            <%= link_to "Logout", "/sessions/logout" %>
-          </span>
-        <% else %>
-          <%= link_to("Login", "/auth/foursquare")  %>
-          <%= link_to(image_tag("/images/4square_logo.png"), "/auth/foursquare")%>
-        <% end %>
-      </span>
-    </div>
+    settle for.us
   </div>
 
+  <div id="menu">
+    <% if current_user != nil %>
+      <a href="#" onclick="javascript:do_settle()">Settle</a>
+      <span id="session">
+        <%= link_to "Logout", "/sessions/logout" %>
+      </span>
+    <% else %>
+      <span id="session">
+        <%= link_to(image_tag("/images/4square_logo.png"), "/auth/foursquare")%>
+        <%= link_to("Login with Foursquare", "/auth/foursquare")  %>
+      </span>
+    <% end %>
+  </div>
+
+  
   <div id="main">
-    <div class="content">
-      <%= yield %>
-    </div>
+    <%= yield %>
   </div>
 
+  <div id="footer">
+      Onuki &copy; 2013
+      <span id="powered">
+        <%= image_tag("/images/poweredByFoursquare_white.png", {:height => '20'})%>
+      </span>
+  </div>
+
+    </div>
+
+  
 </body>
 </html>

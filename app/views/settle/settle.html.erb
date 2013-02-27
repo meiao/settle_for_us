@@ -1,6 +1,17 @@
-<p>You should go to: </p>
-<a href="<%= @local[:canonicalUrl] %>">
-<%= @local.name %>
-</a>
+<div>
+  You should go to: 
+</div>
 
-<%= @local.to_yaml %>
+<div class="location">
+  <div class="link">
+    <a href="<%= @local[:canonicalUrl] %>">
+      <%= @local.name %>
+    </a>
+  </div>
+  <div class="address">
+    <%= @local.location.address %>, <%= @local.location.city %>
+  </div>
+  <div class="help">
+    <%= link_to "Wait, that's nowhere near me.", "/main/help"%>
+  </div>
+</div>
