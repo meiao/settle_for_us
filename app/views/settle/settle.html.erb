@@ -4,12 +4,16 @@
 
 <div class="location">
   <div class="link">
-    <a href="<%= @local[:canonicalUrl] %>">
-      <%= @local.name %>
-    </a>
+    <a href="<%= @local[:canonicalUrl] %>"><%= @local.name %></a>
+    
+    <% if @favorite %>
+      <%= link_to(image_tag("/images/favorite.png"), "/favorites/remove/" + @local[:id]) %>
+    <% else %>
+      <%= link_to(image_tag("/images/favorite_non.png"), "/favorites/add/" + @local[:id]) %>
+    <% end %>
   </div>
   <div class="address">
-    <%= @local.location.address %>, <%= @local.location.city %>
+    <%= @address %>
   </div>
   <div class="help">
     <%= link_to "Wait, that's nowhere near me.", "/main/help"%>

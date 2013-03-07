@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130103001356) do
+ActiveRecord::Schema.define(:version => 20130305212100) do
+
+  create_table "favorites", :force => true do |t|
+    t.string   "venue_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "favorites", ["user_id", "venue_id"], :name => "index_favorites_on_user_id_and_venue_id", :unique => true
+  add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "provider"
