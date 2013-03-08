@@ -5,6 +5,11 @@ class FavoritesHabtm < ActiveRecord::Migration
     add_column :favorites, :canonicalUrl, :string
     add_column :favorites, :address, :string
 
+    create_table :favorites_users, :id => false do |t|
+      t.integer :user_id
+      t.integer :favorite_id
+    end
+
     Favorite.all.each do |f|
       user = User.find(f.user_id)
       user.favorites << f
@@ -17,11 +22,6 @@ class FavoritesHabtm < ActiveRecord::Migration
     
     add_index(:favorites, [:venue_id], :unique => true)
 
-    create_table :favorites_users, :id => false do |t|
-      t.integer :user_id
-      t.integer :favorite_id
-    end
-    
     add_index(:favorites_users, [:user_id])
   end
 end
