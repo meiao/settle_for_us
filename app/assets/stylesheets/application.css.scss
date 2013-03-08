@@ -65,6 +65,11 @@ body {
       vertical-align: middle;
     }
   }
+  
+  .spacer {
+    width: 10px;
+    text-align: center;
+  }
 
 }
 
@@ -87,4 +92,10 @@ body {
 
 .help {
   font-size: small;
+}
+
+.page_title {
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
 }

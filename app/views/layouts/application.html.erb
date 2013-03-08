@@ -31,13 +31,16 @@
 
   <div id="menu">
     <% if current_user != nil %>
-      <a href="#" onclick="javascript:do_settle()">Settle</a>
+      <%= link_to_function("Near", "do_settle()") %>
+      <span class="spacer">-</span>
+      <%= link_to("Favorites", "/favorites/settle") %>
+
       <span id="session">
-        <%= link_to "Logout", "/sessions/logout" %>
+        <%= link_to("Logout", "/sessions/logout") %>
       </span>
     <% else %>
       <span id="session">
-        <%= link_to(image_tag("/images/4square_logo.png"), "/auth/foursquare")%>
+        <%= link_to(image_tag("/images/4square_logo.png"), "/auth/foursquare") %>
         <%= link_to("Login with Foursquare", "/auth/foursquare")  %>
       </span>
     <% end %>
