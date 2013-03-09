@@ -6,7 +6,7 @@ SettleForUs::Application.routes.draw do
 
   get "favorites", to: 'favorites#list'
   get "favorites/settle", to: 'favorites#settle'
-  get "favorites/search/:name", to:'favorites#search'
+  get "favorites/search", to:'favorites#search'
   get "favorites/add/:venue", to: 'favorites#add'
   get "favorites/remove/:venue", to: 'favorites#remove'
   

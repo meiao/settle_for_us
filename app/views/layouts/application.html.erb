@@ -26,16 +26,23 @@
   <div id="content">
   
   <div id="header">
-    settle for.us
+    <%= link_to('settle for.us', '/') %>
   </div>
 
+  <div id="supermenu">
   <div id="menu">
     <% if current_user != nil %>
       <%= link_to_function("Near", "do_settle()") %>
       <span class="spacer">-</span>
       <%= link_to("Favorites", "/favorites/settle") %>
 
+      
       <span id="session">
+        <%= form_tag("/favorites/search", :method => "get") do %>
+          <%= text_field_tag(:name, nil, {:placeholder => "Search for places"}) %>
+          <%= submit_tag("Search") %>
+        <% end %>
+
         <%= link_to("Logout", "/sessions/logout") %>
       </span>
     <% else %>
@@ -45,7 +52,7 @@
       </span>
     <% end %>
   </div>
-
+</div>
   
   <div id="main">
     <%= yield %>

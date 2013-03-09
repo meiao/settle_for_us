@@ -1,19 +1,21 @@
 class FavoritesController < ApplicationController
 
   def list
-    @venues = get_user_favorites(current_user[:id])
-    render :no_favorites if @venues.empty?
+    @favorites = get_user_favorites(current_user[:id])
+    render :no_favorites if @favorites.empty?
   end
   
   def search
-    
+    four2_client = Foursquare2::Client.new(:oauth_token => session[:current_user][:oauth_token])
+    @venues = four2_client.search_venues(:query => params[:name], :intent => 'global')[:groups][0][:items]
+    @favorites = get_user_favorites(current_user[:id])
   end
   
   def settle
-    @venues = get_user_favorites(current_user[:id])
-    render :no_favorites if @venues.empty?
-    num = rand(@venues.length)
-    @selected = @venues[num]
+    @favorites = get_user_favorites(current_user[:id])
+    render :no_favorites if @favorites.empty?
+    num = rand(@favorites.length)
+    @selected = @favorites[num]
   end
   
   def add

@@ -1,0 +1,19 @@
+<% @venues.each do |venue| %>
+<div class="location">
+  <div class="link">
+    <a href="<%= venue[:canonicalUrl] %>"><%= venue.name %></a>
+    
+    <% if @favorite %>
+      <%= link_to(image_tag("/images/favorite.png"), "/favorites/remove/" + venue.id) %>
+    <% else %>
+      <%= link_to(image_tag("/images/favorite_non.png"), "/favorites/add/" + venue.id) %>
+    <% end %>
+  </div>
+  <div class="address">
+    <%= [venue.location.address, venue.location.city].compact.join(' - ') %>
+  </div>
+</div>
+<br />
+<% end %>
+<hr />
+<%= render :partial => 'favorites' %>

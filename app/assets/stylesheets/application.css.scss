@@ -14,6 +14,9 @@
 
 $content-width: 640px;
 $radius: 5px;
+$header-height: 50px;
+$menu-height: 27px;
+$footer-height: 25px;
 
 body {
   width: $content-width;
@@ -34,25 +37,39 @@ body {
 }
 
 #header {
-  height: 50px;
+  position: fixed;
+  top: 0px;
+  height: $header-height;
   font-size: 250%;
   text-shadow: 2px 2px 2px red;
-  color: yellow;
+  
   text-align: center;
   background-color: black;
+  width: $content-width;
+
+  a {
+    color: yellow;
+    text-decoration: none;
+  }
 }
 
-#menu {
-  position: relative;
-  left: - $radius;
-  width: $content-width;
-  background-color: red;
-  border-radius: $radius;
-  padding-left: $radius;
-  padding-right: $radius;
-  color: white;
-  height: 25px;
+#supermenu {
+  position: fixed;
+  top: $header-height;
+  margin-left: auto;
+  margin-right: auto;
 
+  #menu {
+    width: $content-width;
+    background-color: red;
+    position: relative;
+    left: -5px;
+    border-radius: $radius;
+    padding-left: $radius;
+    padding-right: $radius;
+    color: white;
+    height: $menu-height;
+  }
   a {
     color: white;
     text-decoration: none;
@@ -64,8 +81,11 @@ body {
     img {
       vertical-align: middle;
     }
-  }
-  
+    
+    form {
+      display: inline;
+    }
+}
   .spacer {
     width: 10px;
     text-align: center;
@@ -76,15 +96,17 @@ body {
 #main {
   padding-left: 5px;
   padding-right: 5px;
-  padding-top: 5px;
+  padding-top: $header-height + $menu-height;
+  padding-bottom: $footer-height;
 }
 
 #footer {
   background-color: black;
-  position: absolute;
+  position: fixed;
   width: $content-width;
   bottom: 0px;
   color: white;
+  height: $footer-height;
   #powered {
     float: right;
   }
