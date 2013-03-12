@@ -18,6 +18,10 @@ $header-height: 50px;
 $menu-height: 27px;
 $footer-height: 25px;
 
+html {
+  height: 100%;
+}
+
 body {
   width: $content-width;
   margin-left: auto;
@@ -27,6 +31,7 @@ body {
   margin-top: 0px;
   margin-bottom: 0px;
   font-size: large;
+  height: 100%;
 }
 
 #content {
@@ -37,7 +42,7 @@ body {
 }
 
 #header {
-  position: fixed;
+  z-index: 10;
   top: 0px;
   height: $header-height;
   font-size: 250%;
@@ -53,23 +58,21 @@ body {
   }
 }
 
-#supermenu {
-  position: fixed;
-  top: $header-height;
+
+#menu {
+  z-index: 10;
   margin-left: auto;
   margin-right: auto;
+  width: $content-width;
+  background-color: red;
+  position: relative;
+  left: -5px;
+  border-radius: $radius;
+  padding-left: $radius;
+  padding-right: $radius;
+  color: white;
+  height: $menu-height;
 
-  #menu {
-    width: $content-width;
-    background-color: red;
-    position: relative;
-    left: -5px;
-    border-radius: $radius;
-    padding-left: $radius;
-    padding-right: $radius;
-    color: white;
-    height: $menu-height;
-  }
   a {
     color: white;
     text-decoration: none;
@@ -86,7 +89,8 @@ body {
       display: inline;
     }
 }
-  .spacer {
+
+.spacer {
     width: 10px;
     text-align: center;
   }
@@ -94,15 +98,21 @@ body {
 }
 
 #main {
+  z-index: 0;
+  position: absolute;
+  top: $menu-height + $header-height;
+  bottom: $footer-height;
   padding-left: 5px;
   padding-right: 5px;
-  padding-top: $header-height + $menu-height;
-  padding-bottom: $footer-height;
+  overflow-y: auto;
+  width: $content-width - 2* $radius;
+  background-color: white;
 }
 
 #footer {
+  z-index: 10;
   background-color: black;
-  position: fixed;
+  position: absolute;
   width: $content-width;
   bottom: 0px;
   color: white;
